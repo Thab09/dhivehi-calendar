@@ -1,0 +1,39 @@
+{
+  "daysOfWeek": {
+    "1": "Sunday",
+    "2": "Monday",
+    "3": "Tuesday",
+    "4": "Wednesday",
+    "5": "Thursday",
+    "6": "Friday",
+    "7": "Saturday"
+  },
+  "hijriMonths": {
+    "1": "Muḥarram",
+    "2": "Ṣafar",
+    "3": "Rabī‘ al-awwal",
+    "4": "Rabī‘ al-ākhir",
+    "5": "Jumādá al-ūlá",
+    "6": "Jumādá al-ākhirah",
+    "7": "Rajab",
+    "8": "Sha‘bān",
+    "9": "Ramaḍān",
+    "10": "Shawwāl",
+    "11": "Dhū al-Qa‘dah",
+    "12": "Dhū al-Ḥijjah"
+  },
+  "gregorianMonths": {
+    "1": "January",
+    "2": "February",
+    "3": "March",
+    "4": "April",
+    "5": "May",
+    "6": "June",
+    "7": "July",
+    "8": "August",
+    "9": "September",
+    "10": "October",
+    "11": "November",
+    "12": "December"
+  }
+}
