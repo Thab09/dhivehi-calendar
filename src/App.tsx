@@ -3,7 +3,7 @@ import CalendarTable from "./components/CalendarTable.tsx";
 
 function App() {
   return (
-    <div className="max-w-sm mx-auto my-4">
+    <div className="max-w-3xl mx-auto font-poppins">
       <LanguageSelector />
       <CalendarTable />
     </div>

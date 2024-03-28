@@ -1,11 +1,17 @@
-import { Label, Select } from "flowbite-react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const languages = [
-  { code: "en", lang: "English" },
-  { code: "dv", lang: "Dhivehi" },
-  { code: "ar", lang: "Arabic" },
+  { code: "en", lang: "en" },
+  { code: "dv", lang: "dv" },
+  { code: "ar", lang: "ar" },
 ];
 
 function LanguageSelector() {
@@ -24,25 +30,21 @@ function LanguageSelector() {
   }, [i18n, i18n.language]);
 
   return (
-    <div>
-      <div className="max-w-[8rem]">
-        <div className="mb-2 block">
-          <Label htmlFor="countries" value="Language" />
-        </div>
-        <Select
-          id="countries"
-          defaultValue={selectedLanguage}
-          onChange={(e) => changeLanguage(e.target.value)}
-        >
+    <div className="my-4">
+      <Select onValueChange={(value) => changeLanguage(value)}>
+        <SelectTrigger className="w-[70px]">
+          <SelectValue placeholder={selectedLanguage} />
+        </SelectTrigger>
+        <SelectContent className="w-[70px]">
           {languages.map((lng) => {
             return (
-              <option key={lng.code} value={lng.code}>
+              <SelectItem key={lng.code} value={lng.code}>
                 {lng.lang}
-              </option>
+              </SelectItem>
             );
           })}
-        </Select>
-      </div>
+        </SelectContent>
+      </Select>
     </div>
   );
 }

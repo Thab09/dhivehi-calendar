@@ -1,51 +1,57 @@
+import { useTranslation } from "react-i18next";
 import CalendarTableCell from "./CalendarTableCell";
 import CalendarTableHeader from "./CalendarTableHeader";
-import calendar from "../assets/calendar-2024.json";
+import calendar from "../assets/calendar/2024.json";
 
-interface DayData {
-  startDayInWeek: number;
-  MonthNumber: number;
-  secondHijriMonthStartDate: number;
-}
-
-type MonthData = {
-  [key: string]: [number, number, string] | DayData;
-};
+type MonthData = number[][][];
 
 const CalendarTable = () => {
-  const selectedMonth: string = "january";
-  const month: MonthData = Object.entries(calendar.january);
-  console.log(selectedMonth, month, calendar.january);
+  const { t } = useTranslation("2024");
+  const occasions = t("february");
+
+  // const selectedMonth: string = "january";
+  const month: MonthData = calendar.february;
 
   return (
     <div>
-      <CalendarTableCell />
-      <table className="table-fixed w-full mt-5 rounded border-separate border-spacing-1">
+      <table className="table-fixed w-full mt-5">
         <CalendarTableHeader />
-        <tbody className="text-gray-800 text-[0.6rem]">
-          <tr className="">
-            <td>
-              <CalendarTableCell>
-                <p>1</p>
-                <p>22</p>
-              </CalendarTableCell>
-            </td>
-            <td className="border p-2 rounded-sm">60001</td>
-            <td className="border p-2 rounded-sm">60001</td>
-            <td className="border p-2 rounded-sm">60001</td>
-            <td className="border p-2 rounded-sm">60001</td>
-            <td className="border p-2 rounded-sm">60001</td>
-            <td className="border p-2 rounded-sm">60001</td>
-          </tr>
-          <tr className="bg-slate-100">
-            <td className="p-4">60001</td>
-            <td className="p-4"></td>
-            <td className="p-4">6/21/2022</td>
-            <td className="p-4">Not </td>
-            <td className="p-4">Not </td>
-            <td className="p-4">Not </td>
-            <td className="p-4">Not </td>
-          </tr>
+        <tbody className="text-gray-800">
+          {/* {month.map((week, weekIndex) => (
+            <tr key={weekIndex}>
+              {week.map((day, dayIndex) => (
+                <td key={dayIndex} className="border border-neutral-100">
+                  <CalendarTableCell day={day} />
+                </td>
+              ))}
+            </tr>
+          ))} */}
+          {month.map((week, weekIndex) => (
+            <tr key={weekIndex}>
+              {week.map((day, dayIndex) => {
+                // Find occasions for the current day
+                const occasionsForTheDay = Object.entries(occasions).filter(
+                  ([date]) => Number(date) === day[0]
+                );
+                // Object.entries(occasions).map(([date, occasion]) =>
+                //   console.log(date, occasion)
+                // );
+
+                return (
+                  <td key={dayIndex}>
+                    <CalendarTableCell
+                      day={day}
+                      occasion={
+                        occasionsForTheDay.length > 0
+                          ? occasionsForTheDay[0][1]
+                          : null
+                      }
+                    />
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

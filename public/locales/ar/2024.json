@@ -1,125 +1,123 @@
 {
   "year": 2024,
-  "occasions": {
-    "january": {
-      "1": ["New Year"],
-      "7": ["Start of Second Term (Academic Year)"],
-      "24": ["World Education Day"]
-    },
-    "february": {
-      "4": ["World Cancer Day"],
-      "11": ["Martyr's Day"],
-      "21": ["International Mother Language Day"]
-    },
-    "march": {
-      "6": ["Dhivehi Gaumiyyathu Dhiruvaa Aalaa Kuraa Dhuvas"],
-      "8": ["International Women's Day"],
-      "11": ["First Day of Ramadan"],
-      "21": ["World Down Syndrome Day", "World Poetry Day"],
-      "22": ["World Water Day"],
-      "23": ["World Meteorological Day"],
-      "24": ["World Tuberculosis Day"],
-      "30": ["Holiday given by President (Last 10 of Ramadan)"]
-    },
-    "april": {
-      "1": ["Holiday given by President (Last 10 of Ramadan)"],
-      "2": [
-        "Holiday given by President (Last 10 of Ramadan)",
-        "World Autism Awareness Day"
-      ],
-      "3": ["Holiday given by President (Last 10 of Ramadan)"],
-      "4": ["Holiday given by President (Last 10 of Ramadan)"],
-      "5": ["Holiday given by President (Last 10 of Ramadan)"],
-      "6": ["Holiday given by President (Last 10 of Ramadan)"],
-      "7": [
-        "Holiday given by President (Last 10 of Ramadan)",
-        "World Health Day",
-        "Second Term Mid-term Break (Academic Year)"
-      ],
-      "8": ["Holiday given by President (Last 10 of Ramadan)"],
-      "9": ["Holiday given by President (Last 10 of Ramadan)"],
-      "10": ["Eid-ul-Fitr"],
-      "11": ["Holiday on the Occasion of Eid-ul-Fitr"],
-      "12": ["Holiday on the Occasion of Eid-ul-Fitr"],
-      "14": ["Dhivehi Language Day"],
-      "18": ["World Heritage Day"],
-      "22": ["Earth Day"],
-      "25": ["World Malaria Day"]
-    },
-    "may": {
-      "1": ["International Workers' Day"],
-      "3": ["World Press Freedom Day"],
-      "8": ["World Thalassaemia Day"],
-      "10": ["Children's Day"],
-      "12": ["Mother's Day", "International Nurses Day"],
-      "17": ["World Telecommunication and Information Society Day"],
-      "22": ["International Day for Biological Diversity"]
-    },
-    "june": {
-      "5": ["World Environment Day"],
-      "8": ["World Oceans Day"],
-      "13": ["End of Second Term (Academic Year)"],
-      "14": ["World Blood Donor Day"],
-      "16": ["Hajj Day", "Father's Day"],
-      "17": ["Eid-ul Al'haa"],
-      "18": ["Holiday on the Occasion of Eid-ul Al'haa"],
-      "19": ["Holiday on the Occasion of Eid-ul Al'haa"],
-      "20": ["Holiday on the Occasion of Eid-ul Al'haa"],
-      "26": ["International Day against Drug Abuse and Illicit Trafficking"]
-    },
-    "july": {
-      "7": ["Islamic New Year - 1446 AH"],
-      "8": ["Writers Day"],
-      "11": ["World Population Day"],
-      "16": ["Day of 'Aashoora"],
-      "26": ["Independence Day"],
-      "27": ["Holiday on the Occasion of Independence Day"],
-      "31": ["Start of Academic New Year"]
-    },
-    "august": {
-      "12": ["International Youth Day"]
-    },
-    "september": {
-      "4": ["National Day"],
-      "8": ["International Literacy Day"],
-      "15": [
-        "Prophet Muhammad's ﷺ (pbuh) Birthday",
-        "International Day of Democracy"
-      ],
-      "16": ["International Day for the Preservation of the Ozone Layer"],
-      "21": ["International Day of Peace"],
-      "27": ["World Tourism Day"],
-      "31": ["World Heart Day"]
-    },
-    "october": {
-      "1": ["International Day for Older Persons"],
-      "5": [
-        "The Day Maldives Embraced Islam (2nd Rabi' al-'Akhir)",
-        "Teachers' Day"
-      ],
-      "15": ["Farmers' Day"],
-      "16": ["World Food Day"],
-      "22": ["Youth Day"],
-      "24": ["United Nations Day"]
-    },
-    "november": {
-      "3": ["Victory Day"],
-      "11": ["Republic Day"],
-      "14": ["World Diabetes Day"],
-      "19": [
-        "International Men's Day",
-        "World Day for Prevention of Child Abuse"
-      ],
-      "20": ["World Children’s Day"],
-      "25": ["International Day for the Elimination of Violence against Women"]
-    },
-    "december": {
-      "1": ["World AIDS Day"],
-      "3": ["International Day of Persons with Disabilities"],
-      "4": ["Huravee Day"],
-      "7": ["International Civil Aviation Day"],
-      "10": ["Fishermen's Day", "Human Rights Day"],
-      "26": ["Dhivehinge Ebbaivantha Kamuge Dhuvas"]
-    }
+  "january": {
+    "1": ["New Year"],
+    "7": ["Start of Second Term (Academic Year)"],
+    "24": ["World Education Day"]
+  },
+  "february": {
+    "4": ["World Cancer Day"],
+    "11": ["Martyr's Day"],
+    "21": ["International Mother Language Day"]
+  },
+  "march": {
+    "6": ["Dhivehi Gaumiyyathu Dhiruvaa Aalaa Kuraa Dhuvas"],
+    "8": ["International Women's Day"],
+    "11": ["First Day of Ramadan"],
+    "21": ["World Down Syndrome Day", "World Poetry Day"],
+    "22": ["World Water Day"],
+    "23": ["World Meteorological Day"],
+    "24": ["World Tuberculosis Day"],
+    "30": ["Holiday given by President (Last 10 of Ramadan)"]
+  },
+  "april": {
+    "1": ["Holiday given by President (Last 10 of Ramadan)"],
+    "2": [
+      "Holiday given by President (Last 10 of Ramadan)",
+      "World Autism Awareness Day"
+    ],
+    "3": ["Holiday given by President (Last 10 of Ramadan)"],
+    "4": ["Holiday given by President (Last 10 of Ramadan)"],
+    "5": ["Holiday given by President (Last 10 of Ramadan)"],
+    "6": ["Holiday given by President (Last 10 of Ramadan)"],
+    "7": [
+      "Holiday given by President (Last 10 of Ramadan)",
+      "World Health Day",
+      "Second Term Mid-term Break (Academic Year)"
+    ],
+    "8": ["Holiday given by President (Last 10 of Ramadan)"],
+    "9": ["Holiday given by President (Last 10 of Ramadan)"],
+    "10": ["Eid-ul-Fitr"],
+    "11": ["Holiday on the Occasion of Eid-ul-Fitr"],
+    "12": ["Holiday on the Occasion of Eid-ul-Fitr"],
+    "14": ["Dhivehi Language Day"],
+    "18": ["World Heritage Day"],
+    "22": ["Earth Day"],
+    "25": ["World Malaria Day"]
+  },
+  "may": {
+    "1": ["International Workers' Day"],
+    "3": ["World Press Freedom Day"],
+    "8": ["World Thalassaemia Day"],
+    "10": ["Children's Day"],
+    "12": ["Mother's Day", "International Nurses Day"],
+    "17": ["World Telecommunication and Information Society Day"],
+    "22": ["International Day for Biological Diversity"]
+  },
+  "june": {
+    "5": ["World Environment Day"],
+    "8": ["World Oceans Day"],
+    "13": ["End of Second Term (Academic Year)"],
+    "14": ["World Blood Donor Day"],
+    "16": ["Hajj Day", "Father's Day"],
+    "17": ["Eid-ul Al'haa"],
+    "18": ["Holiday on the Occasion of Eid-ul Al'haa"],
+    "19": ["Holiday on the Occasion of Eid-ul Al'haa"],
+    "20": ["Holiday on the Occasion of Eid-ul Al'haa"],
+    "26": ["International Day against Drug Abuse and Illicit Trafficking"]
+  },
+  "july": {
+    "7": ["Islamic New Year - 1446 AH"],
+    "8": ["Writers Day"],
+    "11": ["World Population Day"],
+    "16": ["Day of 'Aashoora"],
+    "26": ["Independence Day"],
+    "27": ["Holiday on the Occasion of Independence Day"],
+    "31": ["Start of Academic New Year"]
+  },
+  "august": {
+    "12": ["International Youth Day"]
+  },
+  "september": {
+    "4": ["National Day"],
+    "8": ["International Literacy Day"],
+    "15": [
+      "Prophet Muhammad's ﷺ (pbuh) Birthday",
+      "International Day of Democracy"
+    ],
+    "16": ["International Day for the Preservation of the Ozone Layer"],
+    "21": ["International Day of Peace"],
+    "27": ["World Tourism Day"],
+    "31": ["World Heart Day"]
+  },
+  "october": {
+    "1": ["International Day for Older Persons"],
+    "5": [
+      "The Day Maldives Embraced Islam (2nd Rabi' al-'Akhir)",
+      "Teachers' Day"
+    ],
+    "15": ["Farmers' Day"],
+    "16": ["World Food Day"],
+    "22": ["Youth Day"],
+    "24": ["United Nations Day"]
+  },
+  "november": {
+    "3": ["Victory Day"],
+    "11": ["Republic Day"],
+    "14": ["World Diabetes Day"],
+    "19": [
+      "International Men's Day",
+      "World Day for Prevention of Child Abuse"
+    ],
+    "20": ["World Children’s Day"],
+    "25": ["International Day for the Elimination of Violence against Women"]
+  },
+  "december": {
+    "1": ["World AIDS Day"],
+    "3": ["International Day of Persons with Disabilities"],
+    "4": ["Huravee Day"],
+    "7": ["International Civil Aviation Day"],
+    "10": ["Fishermen's Day", "Human Rights Day"],
+    "26": ["Dhivehinge Ebbaivantha Kamuge Dhuvas"]
   }
 }
