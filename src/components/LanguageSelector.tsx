@@ -32,7 +32,7 @@ function LanguageSelector() {
   return (
     <div className="my-4">
       <Select onValueChange={(value) => changeLanguage(value)}>
-        <SelectTrigger className="w-[70px]">
+        <SelectTrigger className="w-[70px] border-none shadow-none">
           <SelectValue placeholder={selectedLanguage} />
         </SelectTrigger>
         <SelectContent className="w-[70px]">

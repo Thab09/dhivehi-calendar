@@ -1,44 +1,50 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import CalendarTableCell from "./CalendarTableCell";
 import CalendarTableHeader from "./CalendarTableHeader";
+import OccasionDetails from "./OccasionDetails";
 import calendar from "../assets/calendar/2024.json";
 
 type MonthData = number[][][];
 
 const CalendarTable = () => {
+  const [selectedDay, setSelectedDay] = useState<number | null>();
   const { t } = useTranslation("2024");
-  const occasions = t("february");
+  const occasions = t("april");
 
   // const selectedMonth: string = "january";
-  const month: MonthData = calendar.february;
+  const month: MonthData = calendar.april;
+
+  const handleSelectedDay = (day: number | null) => {
+    setSelectedDay(day);
+  };
+
+  const getOccasions = (day: number | null): [string, string][] => {
+    return Object.entries(occasions).filter(([date]) => Number(date) === day);
+  };
 
   return (
     <div>
-      <table className="table-fixed w-full mt-5">
+      <table className="table-fixed border-separate w-full">
         <CalendarTableHeader />
         <tbody className="text-gray-800">
-          {/* {month.map((week, weekIndex) => (
-            <tr key={weekIndex}>
-              {week.map((day, dayIndex) => (
-                <td key={dayIndex} className="border border-neutral-100">
-                  <CalendarTableCell day={day} />
-                </td>
-              ))}
-            </tr>
-          ))} */}
           {month.map((week, weekIndex) => (
             <tr key={weekIndex}>
               {week.map((day, dayIndex) => {
-                // Find occasions for the current day
-                const occasionsForTheDay = Object.entries(occasions).filter(
-                  ([date]) => Number(date) === day[0]
-                );
-                // Object.entries(occasions).map(([date, occasion]) =>
-                //   console.log(date, occasion)
-                // );
+                const occasionsForTheDay = getOccasions(day[0]);
 
                 return (
-                  <td key={dayIndex}>
+                  <td
+                    key={dayIndex}
+                    onClick={() => {
+                      if (occasionsForTheDay.length > 0) {
+                        handleSelectedDay(day[0]);
+                      } else {
+                        handleSelectedDay(null);
+                      }
+                    }}
+                    className="p-0"
+                  >
                     <CalendarTableCell
                       day={day}
                       occasion={
@@ -54,6 +60,7 @@ const CalendarTable = () => {
           ))}
         </tbody>
       </table>
+      {selectedDay && <OccasionDetails day={selectedDay} />}
     </div>
   );
 };

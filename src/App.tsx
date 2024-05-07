@@ -1,10 +1,11 @@
-import LanguageSelector from "./components/LanguageSelector.tsx";
 import CalendarTable from "./components/CalendarTable.tsx";
+import Header from "./components/Header.tsx";
 
 function App() {
+  //Delete LanguageSelector File
   return (
     <div className="max-w-3xl mx-auto font-poppins">
-      <LanguageSelector />
+      <Header />
       <CalendarTable />
     </div>
   );
