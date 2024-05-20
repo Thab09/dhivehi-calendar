@@ -1,7 +1,7 @@
 import CalendarTable from "./components/CalendarTable.tsx";
 import Header from "./components/Header.tsx";
 
-function App() {
+const App = () => {
   //Delete LanguageSelector File
   return (
     <div className="max-w-3xl mx-auto font-poppins">
@@ -9,6 +9,6 @@ function App() {
       <CalendarTable />
     </div>
   );
-}
+};
 
 export default App;

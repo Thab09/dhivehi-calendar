@@ -1,5 +1,6 @@
 import useDateStore from "@/store/useDateStore";
 import { useTranslation } from "react-i18next";
+import YearSelector from "./YearSelector";
 import {
   Popover,
   PopoverContent,
@@ -28,16 +29,28 @@ const MonthSelector = () => {
 
   return (
     <Popover open={monthSelectorOpen} onOpenChange={setMonthSelectorOpen}>
-      <PopoverTrigger>{months[selectedDate.month]}</PopoverTrigger>
+      <PopoverTrigger
+        className={`${
+          i18n.language === "dv" && "text-xl font-semibold"
+        } text-base font-semibold text-sky-900`}
+      >
+        <span>
+          {months[selectedDate.month] + " " + selectedDate.year}
+          {}
+        </span>
+      </PopoverTrigger>
       <PopoverContent className="p-1">
+        <div className="flex justify-center">
+          <YearSelector />
+        </div>
         <div className="grid grid-cols-3 font-poppins">
           {Object.values(months).map((month, index) => (
             <div
               key={index}
-              className="flex justify-center rounded-sm hover:bg-slate-200 hover:cursor-pointer"
+              className="flex justify-center rounded-sm hover:bg-sky-800 hover:text-sky-50 hover:cursor-pointer"
               onClick={() => handleMonthChange(index)}
             >
-              <p className="p-4">
+              <p className="p-3">
                 {i18n.language === "en" ? month.substring(0, 3) : month}
               </p>
             </div>

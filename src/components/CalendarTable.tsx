@@ -1,19 +1,28 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import useDateStore from "@/store/useDateStore";
+import { getMonthName } from "@/utils/monthUtils";
+
 import CalendarTableCell from "./CalendarTableCell";
 import CalendarTableHeader from "./CalendarTableHeader";
-import OccasionDetails from "./OccasionDetails";
+import Occasions from "./Occasions";
+
 import calendar from "../assets/calendar/2024.json";
 
 type MonthData = number[][][];
-
 const CalendarTable = () => {
   const [selectedDay, setSelectedDay] = useState<number | null>();
+  //store that stores the month and year
+  const { selectedDate } = useDateStore();
+  const monthName = getMonthName(selectedDate.month).toLowerCase();
+  //get year by the selected year
   const { t } = useTranslation("2024");
-  const occasions = t("april");
+  //get occasion month by the selected month
+  const occasions = t(monthName);
 
   // const selectedMonth: string = "january";
-  const month: MonthData = calendar.april;
+  //get month by the selected month
+  const month: MonthData = calendar[monthName] as MonthData;
 
   const handleSelectedDay = (day: number | null) => {
     setSelectedDay(day);
@@ -24,7 +33,7 @@ const CalendarTable = () => {
   };
 
   return (
-    <div>
+    <div className="mx-1">
       <table className="table-fixed border-separate w-full">
         <CalendarTableHeader />
         <tbody className="text-gray-800">
@@ -60,7 +69,7 @@ const CalendarTable = () => {
           ))}
         </tbody>
       </table>
-      {selectedDay && <OccasionDetails day={selectedDay} />}
+      {selectedDay && <Occasions day={selectedDay} />}
     </div>
   );
 };

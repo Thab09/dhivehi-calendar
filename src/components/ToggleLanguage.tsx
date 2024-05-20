@@ -33,9 +33,9 @@ const ToggleLanguage = () => {
     languages.find((lang) => lang.code !== selectedLanguage)?.lang || "";
 
   return (
-    <div className="my-4">
+    <div className="">
       <Toggle
-        className="hover:bg-transparent hover:text-black data-[state=on]:bg-transparent"
+        className="text-[0.750rem] font-medium hover:bg-transparent hover:underline text-sky-800 data-[state=on]:text-sky-800 data-[state=on]:bg-transparent"
         onPressedChange={handleChangeLanguage}
       >
         {toggleLabel}

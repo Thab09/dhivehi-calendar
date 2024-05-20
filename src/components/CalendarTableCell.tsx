@@ -29,11 +29,11 @@ const CalendarTableCell = ({ day, occasion }: CalendarTableCellProps) => {
       className={`${day[0] === 0 && "hidden"}
       ${
         day[2] === 1 && occasion?.length
-          ? "hover:cursor-pointer bg-red-700 text-white"
+          ? "hover:cursor-pointer bg-red-700 text-red-200 "
           : day[2] === 1
           ? "bg-red-700 text-white"
           : occasion?.length
-          ? "hover:cursor-pointer bg-sky-50 text-sky-800"
+          ? "hover:cursor-pointer bg-sky-50 text-sky-600"
           : "bg-sky-50"
       }  
          px-2 py-1 sm:px-3 sm:py-4 rounded-sm flex flex-col sm:flex-row gap-2 justify-between tabular-nums items-center`}
