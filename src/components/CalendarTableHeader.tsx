@@ -10,7 +10,7 @@ const CalendarTableHeader = () => {
         {Object.entries(days).map(([key, day]) => (
           <th
             key={key}
-            className="text-white bg-sky-700 rounded-sm font-medium text-xs sm:text-sm py-3"
+            className="text-white bg-sky-700 font-mona rounded-sm font-medium text-xs sm:text-sm py-3"
           >
             <p
               className={`${
@@ -18,8 +18,8 @@ const CalendarTableHeader = () => {
               } sm:hidden`}
             >
               {i18n.language === "en"
-                ? day.substring(0, 3)
-                : day.substring(0, 4).toUpperCase()}
+                ? day.substring(0, 3).toUpperCase()
+                : day.substring(0, 4)}
             </p>
             <p
               className={`${

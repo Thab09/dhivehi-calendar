@@ -12,6 +12,7 @@ module.exports = {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
       amiri: ["Amiri", "sans-serif"],
+      mona: ["Mona Sans", "sans-serif"],
     },
     container: {
       center: true,

@@ -15,7 +15,7 @@ const YearSelector = () => {
         setSelectedDate({ month: selectedDate.month, year: Number(value) })
       }
     >
-      <SelectTrigger className="w-20 border-none shadow-none focus:ring-0">
+      <SelectTrigger className="w-24 shadow-none focus:ring-0 text-sm border-sky-100 sm:font-medium text-sky-900">
         <SelectValue placeholder={selectedDate.year} />
       </SelectTrigger>
       <SelectContent>
