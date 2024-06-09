@@ -1,14 +1,15 @@
 import Calendar from "./Calendar";
+import Header from "./Header";
 import OccasionBox from "./OccasionBox";
 
-const Main = () => {
+const Layout = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">main section</h1>
+    <div className="max-w-3xl mx-auto">
+      <Header />
       <Calendar />
       <OccasionBox />
     </div>
   );
 };
 
-export default Main;
+export default Layout;

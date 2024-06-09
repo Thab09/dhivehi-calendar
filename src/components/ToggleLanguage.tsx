@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Toggle } from "@/components/ui/toggle";
 
 const languages = [
-  { code: "en", lang: "English" },
-  { code: "dv", lang: "Dhivehi" },
+  { code: "en", lang: "Switch to English" },
+  { code: "dv", lang: "Switch to Dhivehi" },
 ];
 
 const ToggleLanguage = () => {
@@ -35,7 +35,7 @@ const ToggleLanguage = () => {
   return (
     <div className="">
       <Toggle
-        className="text-[0.750rem] font-medium hover:bg-transparent hover:underline text-sky-800 data-[state=on]:text-sky-800 data-[state=on]:bg-transparent"
+        className="text-sm font-normal dark:text-white hover:bg-transparent hover:underline text-black data-[state=on]:text-black data-[state=on]:bg-transparent"
         onPressedChange={handleChangeLanguage}
       >
         {toggleLabel}
