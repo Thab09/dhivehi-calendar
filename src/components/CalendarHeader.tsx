@@ -22,8 +22,8 @@ const CalendarHeader = () => {
             </p>
             <p
               className={`${
-                i18n.language === "dv" && "text-base font-semibold"
-              } hidden sm:inline font-base text-smoke-400 dark:text-white`}
+                i18n.language === "dv" && "text-lg font-semibold"
+              } hidden sm:inline text-sm font-semibold text-smoke-300 dark:text-white`}
             >
               {i18n.language === "en" ? day.substring(0, 3).toUpperCase() : day}
             </p>

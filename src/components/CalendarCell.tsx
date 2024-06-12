@@ -1,11 +1,23 @@
+import useCheckOccasion from "@/hooks/useCheckOccasion";
 import useDateStore from "@/store/useDateStore";
+import { isToday } from "@/utils/isTodayUtils";
 
 type CalendarCellProps = {
   day: number[];
-  occasion?: string | null;
 };
-const CalendarCell = ({ day, occasion }: CalendarCellProps) => {
-  const { selectedDate } = useDateStore();
+const CalendarCell = ({ day }: CalendarCellProps) => {
+  const { selectedDate, setSelectedDate } = useDateStore();
+  const today = isToday(day[0], selectedDate.month, selectedDate.year);
+
+  const checkOcccasion = useCheckOccasion({ day: day[0] });
+
+  const handleSelectedDay = (day: number) => {
+    setSelectedDate({
+      day: day,
+      month: selectedDate.month,
+      year: selectedDate.year,
+    });
+  };
 
   const transformNumerals = (num: number): string => {
     const arabicNumerals: string[] = [
@@ -30,18 +42,20 @@ const CalendarCell = ({ day, occasion }: CalendarCellProps) => {
   return (
     <div
       className={`${day[0] === 0 && "hidden"}
+      ${today && "bg-red-700 text-white"}
       ${
-        day[2] === 1 && occasion?.length
+        day[2] === 1 && checkOcccasion?.length
           ? "hover:cursor-pointer text-red-200 "
           : day[2] === 1
           ? "text-red-700"
-          : occasion?.length
+          : checkOcccasion?.length
           ? "hover:cursor-pointer  text-sky-600"
           : "text-black dark:text-white"
       }  
-        py-3 sm:px-3 sm:py-6 flex flex-col  gap-1 justify-center sm:gap-1 tabular-nums items-center`}
+        py-3 sm:px-3 sm:py-6 flex flex-col  gap-1 justify-center items-center border-smoke-50 tabular-nums sm:gap-1 sm:border-b`}
+      onClick={() => handleSelectedDay(day[0])}
     >
-      <p className="font-semibold text-base sm:text-2xl">{day[0]}</p>
+      <p className="font-medium text-base sm:text-2xl sm:font-bold">{day[0]}</p>
       <p className="text-xs sm:text-base font-amiri">
         {transformNumerals(day[3])}
       </p>

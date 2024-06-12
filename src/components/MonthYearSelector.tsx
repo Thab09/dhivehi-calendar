@@ -15,7 +15,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import ToggleCalendarButton from "./ToggleCalendarButton";
 const MonthYearSelector = () => {
   //Store that stores the month and year
   const { selectedDate, setSelectedDate } = useDateStore();
@@ -62,15 +61,15 @@ const MonthYearSelector = () => {
           />
         </PopoverContent>
       </Popover>
-      <ToggleCalendarButton />
+      <p>arabic month</p>
     </div>
   );
 };
 
 interface MonthSelectorProps {
   setMonthSelectorOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setSelectedDate: (date: { month: number; year: number }) => void;
-  selectedDate: { month: number; year: number };
+  setSelectedDate: (date: { day: number; month: number; year: number }) => void;
+  selectedDate: { day: number; month: number; year: number };
   months: string;
 }
 
@@ -89,7 +88,11 @@ const MonthSelector = ({
    */
 
   const handleMonthChange = (newMonthIndex: number) => {
-    setSelectedDate({ month: newMonthIndex + 1, year: selectedDate.year });
+    setSelectedDate({
+      day: selectedDate.day,
+      month: newMonthIndex + 1,
+      year: selectedDate.year,
+    });
     setMonthSelectorOpen(false);
   };
   return (
@@ -110,14 +113,18 @@ const MonthSelector = ({
 };
 
 interface YearSelectorProps {
-  setSelectedDate: (date: { month: number; year: number }) => void;
-  selectedDate: { month: number; year: number };
+  setSelectedDate: (date: { day: number; month: number; year: number }) => void;
+  selectedDate: { day: number; month: number; year: number };
 }
 const YearSelector = ({ selectedDate, setSelectedDate }: YearSelectorProps) => {
   return (
     <Select
       onValueChange={(value) =>
-        setSelectedDate({ month: selectedDate.month, year: Number(value) })
+        setSelectedDate({
+          day: selectedDate.day,
+          month: selectedDate.month,
+          year: Number(value),
+        })
       }
     >
       <SelectTrigger className="w-full justify-center shadow-none focus:ring-0 text-sm border-sky-100 sm:font-medium text-sky-900">
