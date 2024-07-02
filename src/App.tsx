@@ -1,23 +1,15 @@
-import CalendarTable from "./components/CalendarTable.tsx";
-import { useTranslation } from "react-i18next";
-import Layout from "./components/Layout.tsx";
+import Calendar from "./components/Calendar.tsx";
+import Header from "./components/Header.tsx";
+import OccasionBox from "./components/OccasionBox.tsx";
 
 const App = () => {
-  const { i18n } = useTranslation("common");
-  //Delete LanguageSelector File
-  // return (
-  //   <div className="max-w-3xl mx-auto font-poppins">
-  //     <Header />
-  //     <CalendarTable />
-  //   </div>
-  // );
   return (
-    <div
-      className={`${
-        i18n.language === "en" ? "font-mona" : "font-rasmee"
-      }h-screen bg-white dark:bg-smoke-900`}
-    >
-      <Layout />
+    <div className="h-screen bg-white dark:bg-zinc-900">
+      <div className="max-w-3xl mx-auto">
+        <Header />
+        <Calendar />
+        <OccasionBox />
+      </div>
     </div>
   );
 };

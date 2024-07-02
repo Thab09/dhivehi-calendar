@@ -3,45 +3,52 @@ import { useTranslation } from "react-i18next";
 import useDateStore from "@/store/useDateStore";
 
 const OccasionBox = () => {
-  const { i18n } = useTranslation();
+  //getting the translation from the common.json files
+  const { t } = useTranslation("common");
+  //getting the specific months from the common.json files
+  const months = t("gregorianMonths");
+  const noOccasion = t("general.1");
   const { selectedDate } = useDateStore();
   const getOccasion = useCheckOccasion({
     day: selectedDate.day,
   });
-
   return (
-    <div>
+    <div className="bg-sky-50 rounded-sm my-3 mx-2 sm:my-6 py-3 px-4 sm:px-5 sm:py-4 md:px-6 md:py-5 dark:bg-zinc-800">
+      <p className="text-sky-900 text-sm sm:text-base font-medium mb-2 sm:mb-4 dark:text-smoke-400">
+        {`${selectedDate.day} ${months[selectedDate.month]} ${
+          selectedDate.year
+        } - `}
+      </p>
       {getOccasion?.length ? (
         getOccasion.map((occasion, index) => (
-          <div
-            key={index}
-            className="bg-sky-50 rounded-sm my-3 sm:my-6 py-3 px-4 sm:px-5 sm:py-4 md:px-6 md:py-5"
-          >
+          <div key={`occasion-${index}`}>
             {Array.isArray(occasion[1]) &&
               occasion[1].map((occasionDescription, innerIndex) => (
-                <p
-                  className={`${
-                    i18n.language === "dv" && "text-base font-medium"
-                  } text-sky-900 text-xs sm:text-base`}
-                  key={innerIndex}
-                >
-                  - {occasionDescription}
-                </p>
+                <Occasion
+                  key={`occasion-${index}-${innerIndex}`}
+                  occasion={occasionDescription}
+                />
               ))}
           </div>
         ))
       ) : (
-        <div className="bg-sky-50 rounded-sm my-3 sm:my-6 py-3 px-4 sm:px-5 sm:py-4 md:px-6 md:py-5">
-          <p
-            className={`${
-              i18n.language === "dv" && "text-base font-medium"
-            } text-sky-900 text-xs sm:text-base`}
-          >
-            No Occasion
-          </p>
+        <div>
+          <Occasion occasion={noOccasion} />
         </div>
       )}
     </div>
+  );
+};
+
+type OccasionProps = {
+  occasion: string;
+};
+
+const Occasion = ({ occasion }: OccasionProps) => {
+  return (
+    <p className="text-sky-900 text-sm sm:text-lg mb-1 dark:text-smoke-100">
+      - {occasion}
+    </p>
   );
 };
 

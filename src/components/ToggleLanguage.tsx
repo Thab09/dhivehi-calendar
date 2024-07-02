@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Toggle } from "@/components/ui/toggle";
 
 const languages = [
-  { code: "en", lang: "Switch to English" },
-  { code: "dv", lang: "Switch to Dhivehi" },
+  { code: "en", lang: "ENGLISH", dir: "ltr" },
+  { code: "dv", lang: "DHIVEHI", dir: "rtl" },
 ];
 
 const ToggleLanguage = () => {
@@ -18,10 +18,13 @@ const ToggleLanguage = () => {
   useEffect(() => {
     // Set the language in i18n and update local storage
     i18n.changeLanguage(selectedLanguage);
-    localStorage.setItem("selectedLanguage", selectedLanguage);
+    localStorage.se;
+    // Changing the font based on the language
+    document.body.className =
+      selectedLanguage === "en" ? "font-mona" : "font-rasmee";
     // Changing the direction based on the language
-    //SET THE DIRECTION CHANGE AT A HIGHER LEVEL?
-    document.body.dir = i18n.dir();
+    document.body.dir =
+      languages.find((lang) => lang.code === selectedLanguage)?.dir || "ltr";
   }, [i18n, selectedLanguage]);
 
   const handleChangeLanguage = () => {
@@ -33,10 +36,11 @@ const ToggleLanguage = () => {
     languages.find((lang) => lang.code !== selectedLanguage)?.lang || "";
 
   return (
-    <div className="">
+    <div>
       <Toggle
-        className="text-sm font-normal dark:text-white hover:bg-transparent hover:underline text-black data-[state=on]:text-black data-[state=on]:bg-transparent"
+        className="text-xs px-4 font-normal rounded-sm font-mona bg-sky-50 text-sky-900 data-[state=on]:bg-sky-50 data-[state=on]:text-sky-900 hover:bg-sky-50 hover:text-sky-900 dark:text-stone-100 dark:bg-zinc-800"
         onPressedChange={handleChangeLanguage}
+        size={"sm"}
       >
         {toggleLabel}
       </Toggle>

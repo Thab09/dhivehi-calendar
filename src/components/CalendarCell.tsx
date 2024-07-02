@@ -10,6 +10,7 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
   const today = isToday(day[0], selectedDate.month, selectedDate.year);
 
   const checkOcccasion = useCheckOccasion({ day: day[0] });
+  console.log(day);
 
   const handleSelectedDay = (day: number) => {
     setSelectedDate({
@@ -39,20 +40,27 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
     );
   };
 
+  //HOLIDAY LEVELS
+  // day[2] === 1 means government && bank holiday
+  // day[2] === 2 means government holiday but bank open
+  // day[2] === 3 means bank holiday but government open
   return (
     <div
       className={`${day[0] === 0 && "hidden"}
-      ${today && "bg-red-700 text-white"}
+      ${today && "bg-sky-50 rounded-sm dark:bg-zinc-800"}
+      ${selectedDate.day === day[0] && "bg-sky-50 rounded-sm dark:bg-zinc-800"}
+      py-3 sm:px-3 sm:py-6 flex flex-col gap-1 justify-center items-center text-black dark:text-smoke-50 tabular-nums sm:gap-1 hover:cursor-pointer
+      ${day[2] === 1 && "text-red-700 dark:!text-red-400"}
       ${
-        day[2] === 1 && checkOcccasion?.length
-          ? "hover:cursor-pointer text-red-200 "
-          : day[2] === 1
-          ? "text-red-700"
-          : checkOcccasion?.length
-          ? "hover:cursor-pointer  text-sky-600"
-          : "text-black dark:text-white"
-      }  
-        py-3 sm:px-3 sm:py-6 flex flex-col  gap-1 justify-center items-center border-smoke-50 tabular-nums sm:gap-1 sm:border-b`}
+        (day[2] === 2 || day[2] === 3) &&
+        "text-orange-600 dark:!text-orange-400"
+      }
+      ${
+        day[2] === 0 &&
+        checkOcccasion?.length &&
+        "text-sky-700 dark:!text-sky-400"
+      } 
+        `}
       onClick={() => handleSelectedDay(day[0])}
     >
       <p className="font-medium text-base sm:text-2xl sm:font-bold">{day[0]}</p>

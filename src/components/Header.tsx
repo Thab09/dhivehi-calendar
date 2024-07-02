@@ -7,26 +7,26 @@ import { PiSun } from "react-icons/pi";
 const Header = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
   return (
-    <div className="mx-1">
-      <div className="flex justify-end items-center">
+    <div className="mx-2 mb-3 border-b border-sky-50 dark:border-zinc-700">
+      <div className="flex justify-end gap-2 items-center pt-2">
         <ToggleLanguage />
         {darkMode === "light" ? (
-          <div className="p-2 rounded-sm">
-            <PiMoonFill
-              onClick={toggleDarkMode}
-              className="cursor-pointer text-neutral-900"
-            />
+          <div
+            className="p-2 rounded-sm bg-sky-50 cursor-pointer"
+            onClick={toggleDarkMode}
+          >
+            <PiMoonFill className="text-sky-700" />
           </div>
         ) : (
-          <div className="p-2 rounded-sm">
-            <PiSun
-              onClick={toggleDarkMode}
-              className="cursor-pointer text-white"
-            />
+          <div
+            className="p-2 rounded-sm bg-zinc-800 cursor-pointer"
+            onClick={toggleDarkMode}
+          >
+            <PiSun className="text-stone-100" />
           </div>
         )}
       </div>
-      <div className="flex justify-start items-center my-2">
+      <div className="flex justify-start items-center mt-4">
         <MonthYearSelector />
       </div>
     </div>

@@ -12,6 +12,10 @@
   src: url("../fonts/AK-Rasmee.ttf");
 }
 @font-face {
+  font-family: "Randhoo";
+  src: url("../fonts/Randhoo.ttf");
+}
+@font-face {
   font-family: "Mona Sans";
   src: url("../fonts/Mona-Sans.woff2") format("woff2 supports variations"),
     url("../fonts/Mona-Sans.woff2") format("woff2-variations");

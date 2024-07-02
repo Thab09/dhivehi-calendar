@@ -7,14 +7,13 @@ const CalendarHeader = () => {
     <thead>
       <tr>
         {Object.entries(days).map(([key, day]) => (
-          <th
-            key={key}
-            className="text-black font-mona rounded-sm font-medium text-xs sm:text-sm py-3"
-          >
+          <th key={key} className="rounded-sm py-3">
             <p
               className={`${
-                i18n.language === "dv" && "text-sm font-semibold"
-              } sm:hidden font-bold text-smoke-400 dark:text-white`}
+                i18n.language === "dv"
+                  ? "text-sm font-semibold"
+                  : "text-xs font-medium"
+              } sm:hidden text-smoke-400 dark:text-smoke-300`}
             >
               {i18n.language === "en"
                 ? day.substring(0, 1).toUpperCase()
@@ -23,7 +22,7 @@ const CalendarHeader = () => {
             <p
               className={`${
                 i18n.language === "dv" && "text-lg font-semibold"
-              } hidden sm:inline text-sm font-semibold text-smoke-300 dark:text-white`}
+              } hidden sm:inline text-base font-normal text-smoke-400 dark:text-smoke-300`}
             >
               {i18n.language === "en" ? day.substring(0, 3).toUpperCase() : day}
             </p>

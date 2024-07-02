@@ -1,4 +1,4 @@
 const ToggleCalendarButton = () => {
-  return <div className="">academic </div>;
+  return <div className="">ACADEMIC</div>;
 };
 export default ToggleCalendarButton;

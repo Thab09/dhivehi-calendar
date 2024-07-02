@@ -4,6 +4,9 @@ import useDateStore from "@/store/useDateStore";
 import { getMonthName } from "@/utils/monthUtils";
 
 import calendar from "../assets/calendar/2024.json";
+import getHijriDate from "@/utils/getHijriDate";
+import useHijriDateStore from "@/store/useHijriDateStore";
+import { useEffect } from "react";
 
 type Day = [number, number, number, number, number, number];
 type Week = Day[];
@@ -47,8 +50,25 @@ const Calendar = () => {
   const monthName = getMonthName(selectedDate.month).toLowerCase() as MonthName;
   const month: Month = calendarData[monthName];
 
+  const setHijriDates = useHijriDateStore((state) => state.setHijriDates);
+
+  useEffect(() => {
+    const {
+      firstHijriMonth,
+      secondHijriMonth,
+      firstHijriYear,
+      secondHijriYear,
+    } = getHijriDate(month);
+    setHijriDates(
+      firstHijriMonth,
+      secondHijriMonth,
+      firstHijriYear,
+      secondHijriYear
+    );
+  }, [month, setHijriDates]);
+
   return (
-    <div className="mx-1">
+    <div className="mx-2">
       <table className="table-fixed w-full">
         <CalendarHeader />
         <CalendarContent month={month} />
