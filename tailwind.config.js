@@ -15,6 +15,7 @@ module.exports = {
       mona: ["Mona Sans", "sans-serif"],
       rasmee: ["AK Rasmee", "sans-serif"],
       randhoo: ["Randhoo", "sans-serif"],
+      aammu: ["Aammu", "sans-serif"],
     },
     container: {
       center: true,

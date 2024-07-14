@@ -1,6 +1,7 @@
 import Calendar from "./components/Calendar.tsx";
 import Header from "./components/Header.tsx";
 import OccasionBox from "./components/OccasionBox.tsx";
+import PrayerTimes from "./components/PrayerTimes.tsx";
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
         <Header />
         <Calendar />
         <OccasionBox />
+        <PrayerTimes />
       </div>
     </div>
   );

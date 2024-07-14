@@ -21,7 +21,7 @@ const ToggleLanguage = () => {
     localStorage.se;
     // Changing the font based on the language
     document.body.className =
-      selectedLanguage === "en" ? "font-mona" : "font-rasmee";
+      selectedLanguage === "en" ? "font-mona" : "font-aammu";
     // Changing the direction based on the language
     document.body.dir =
       languages.find((lang) => lang.code === selectedLanguage)?.dir || "ltr";
