@@ -10,6 +10,7 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
   const today = isToday(day[0], selectedDate.month, selectedDate.year);
 
   const checkOcccasion = useCheckOccasion({ day: day[0] });
+  console.log(day);
 
   const handleSelectedDay = (day: number) => {
     setSelectedDate({

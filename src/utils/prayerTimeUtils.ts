@@ -48,3 +48,16 @@ export const getDateFromDayOfYear = (
 
   return date.getDate();
 };
+
+export const convertMinutesToHours = (minutes: number): string => {
+  if (minutes < 0) {
+    throw new Error("Minutes cannot be negative");
+  }
+
+  const hours = Math.floor(minutes / 60);
+  const remainingMinutes = minutes % 60;
+
+  return `${hours.toString().padStart(2, "0")}:${remainingMinutes
+    .toString()
+    .padStart(2, "0")}`;
+};

@@ -20,7 +20,7 @@ const usePrayerTime = () => {
       if (startIndex !== -1) {
         const totalRows = prayerTimes.length;
         const rows = [];
-        for (let i = -7; i <= 7; i++) {
+        for (let i = 0; i <= 7; i++) {
           const index = (startIndex + i + totalRows) % totalRows;
           rows.push(prayerTimes[index]);
         }
@@ -37,29 +37,28 @@ const usePrayerTime = () => {
       try {
         const data = await readCSVFile(island);
         setPrayerTimes(data);
-
-        if (isInitialMount.current) {
-          isInitialMount.current = false;
-          const currentDayOfYear = getDayOfYear(new Date());
-          getRowsByDate(currentDayOfYear);
-        } else if (selectedDate) {
-          const selectedDayOfYear = getDayOfYear(
-            new Date(
-              selectedDate.year,
-              selectedDate.month - 1,
-              selectedDate.day
-            )
-          );
-          getRowsByDate(selectedDayOfYear);
-        }
       } catch (error) {
         console.error("Error reading CSV file:", error);
-        setSelectedRows(null);
+        setPrayerTimes([]);
       }
     };
-
     fetchPrayerTimes();
-  }, [island, selectedDate, getRowsByDate]);
+  }, [island]);
+
+  useEffect(() => {
+    if (prayerTimes.length > 0) {
+      if (isInitialMount.current) {
+        isInitialMount.current = false;
+        const currentDayOfYear = getDayOfYear(new Date());
+        getRowsByDate(currentDayOfYear);
+      } else if (selectedDate) {
+        const selectedDayOfYear = getDayOfYear(
+          new Date(selectedDate.year, selectedDate.month - 1, selectedDate.day)
+        );
+        getRowsByDate(selectedDayOfYear);
+      }
+    }
+  }, [prayerTimes, selectedDate, getRowsByDate]);
 
   const selectIsland = useCallback((islandCode: number) => {
     setIsland(islandCode);
