@@ -1,22 +1,32 @@
 import useCheckOccasion from "@/hooks/useCheckOccasion";
 import useDateStore from "@/store/useDateStore";
 import { isToday } from "@/utils/isTodayUtils";
+import { useEffect } from "react";
 
 type CalendarCellProps = {
   day: number[];
 };
 const CalendarCell = ({ day }: CalendarCellProps) => {
-  const { selectedDate, setSelectedDate } = useDateStore();
+  const {
+    selectedDate,
+    setSelectedDate,
+    setSelectedHijriDate,
+    setHolidayLevel,
+  } = useDateStore();
   const today = isToday(day[0], selectedDate.month, selectedDate.year);
 
   const checkOcccasion = useCheckOccasion({ day: day[0] });
-  console.log(day);
 
-  const handleSelectedDay = (day: number) => {
+  const handleSelectedDay = (day: number[]) => {
     setSelectedDate({
-      day: day,
+      day: day[0],
       month: selectedDate.month,
       year: selectedDate.year,
+    });
+    setSelectedHijriDate({
+      day: day[3],
+      month: day[4],
+      year: day[5],
     });
   };
 
@@ -40,7 +50,20 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
     );
   };
 
+  useEffect(() => {
+    if (today) {
+      setSelectedHijriDate({
+        day: day[3],
+        month: day[4],
+        year: day[5],
+      });
+
+      setHolidayLevel(day[2]);
+    }
+  }, [day, setSelectedHijriDate, setHolidayLevel, today]);
+
   //HOLIDAY LEVELS
+  // day[2] === 0 means government && bank open
   // day[2] === 1 means government && bank holiday
   // day[2] === 2 means government holiday but bank open
   // day[2] === 3 means bank holiday but government open
@@ -61,7 +84,8 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
         "text-sky-700 dark:!text-sky-400"
       } 
         `}
-      onClick={() => handleSelectedDay(day[0])}
+      // onClick={() => handleSelectedDay(day[0])}
+      onClick={() => handleSelectedDay(day)}
     >
       <p className="font-medium text-base sm:text-2xl sm:font-bold">{day[0]}</p>
       <p className="text-xs sm:text-base font-amiri">
