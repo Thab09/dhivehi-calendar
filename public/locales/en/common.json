@@ -1,7 +1,10 @@
 {
   "general": {
     "1": "No Occasion",
-    "2": "Prayer times for"
+    "2": "Prayer times for",
+    "3": "Government Holiday - Bank Holiday",
+    "4": "Government Holiday - Bank Open",
+    "5": "Government Open - Bank Holiday"
   },
   "prayers": {
     "0": "Date",

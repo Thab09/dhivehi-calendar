@@ -107,14 +107,14 @@ const MonthSelector = ({
       }}
       dir={i18n.dir()}
     >
-      <SelectTrigger className="w-5/6 justify-between rounded-sm mx-auto shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
+      <SelectTrigger className="w-5/6 justify-between rounded-none mx-auto shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
         <SelectValue placeholder={months[selectedDate.month]} />
       </SelectTrigger>
-      <SelectContent className="rounded-sm">
+      <SelectContent className="rounded-none">
         {Object.values(months).map((month, index) => (
           <div
             key={index}
-            className="flex justify-center rounded-sm text-smoke-600 dark:text-white hover:cursor-pointer"
+            className="flex justify-center rounded-none text-smoke-600 dark:text-white hover:cursor-pointer"
           >
             <SelectItem value={String(index + 1)}>
               <p
@@ -155,10 +155,10 @@ const YearSelector = ({
         });
       }}
     >
-      <SelectTrigger className="w-5/6 justify-between rounded-sm mx-auto shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
+      <SelectTrigger className="w-5/6 justify-between rounded-none mx-auto shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
         <SelectValue placeholder={selectedDate.year} />
       </SelectTrigger>
-      <SelectContent className="rounded-sm">
+      <SelectContent className="rounded-none">
         <SelectItem value="2024">2024</SelectItem>
         <SelectItem disabled value="2025">
           2025

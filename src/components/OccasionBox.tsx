@@ -9,13 +9,18 @@ const OccasionBox = () => {
   const gmonths = t("gregorianMonths");
   const hmonths = t("hijriMonths");
   const noOccasion = t("general.1");
-  const { selectedDate, selectedHijriDate, holidayLevel } = useDateStore();
+  const holiday = t("general");
+  const { selectedDate, selectedHijriDate, holidayStatus } = useDateStore();
   const getOccasion = useCheckOccasion({
     day: selectedDate.day,
   });
+
+  console.log(holiday);
+
   return (
-    <div className="bg-sky-50 border border-sky-100 rounded-sm my-3 mx-2 sm:my-6 py-3 px-4 sm:px-5 sm:py-4 md:px-6 md:py-5 dark:bg-zinc-800">
+    <div className="bg-sky-50 border border-sky-100  my-3 mx-2 sm:my-6 py-3 px-4 sm:px-4 sm:py-4 dark:bg-zinc-800">
       <Date {...{ selectedDate, selectedHijriDate, gmonths, hmonths }} />
+      <HolidayStatus {...{ holidayStatus, holiday }} />
 
       {getOccasion?.length ? (
         getOccasion.map((occasion, index) => (
@@ -53,12 +58,41 @@ const Date = ({
   hmonths,
 }: DateProps) => {
   return (
-    <p className="text-sky-950 text-xs sm:text-sm font-medium tabular-nums mb-2 sm:mb-4 dark:text-smoke-400">
+    <p className="text-sky-950 text-xs sm:text-sm font-medium opacity-80 mb-1 tabular-nums  dark:text-smoke-400">
       {`${selectedDate.day} ${gmonths[selectedDate.month]} ${
         selectedDate.year
       } - ${selectedHijriDate.day} ${hmonths[selectedHijriDate.month]} ${
         selectedHijriDate.year
       }`}
+    </p>
+  );
+};
+
+//HOLIDAY LEVEL COMPONENT
+type HolidayStatusProps = {
+  holidayStatus: number;
+  holiday: string;
+};
+
+const HolidayStatus = ({ holidayStatus, holiday }: HolidayStatusProps) => {
+  let statusText;
+
+  switch (holidayStatus) {
+    case 1:
+      statusText = <p>{`${holiday[3]}`}</p>;
+      break;
+    case 2:
+      statusText = <p>{`${holiday[4]}`}</p>;
+      break;
+    case 3:
+      statusText = <p>{`${holiday[5]}`}</p>;
+      break;
+    default:
+      statusText = "";
+  }
+  return (
+    <p className="text-sky-950 opacity-70 text-[11px] mb-2 dark:text-smoke-100">
+      {statusText}
     </p>
   );
 };
@@ -70,8 +104,8 @@ type OccasionProps = {
 
 const Occasion = ({ occasion }: OccasionProps) => {
   return (
-    <p className="text-sky-900 text-sm sm:text-lg mb-1 dark:text-smoke-100">
-      - {occasion}
+    <p className="text-sky-950 text-sm sm:text-base mb-1 dark:text-smoke-100">
+      • {occasion}
     </p>
   );
 };

@@ -56,7 +56,7 @@ const IslandSelector = ({
     >
       <div className="flex items-center gap-4 mt-2">
         <p className="font-normal text-sm">{prayerSelectorCaption}</p>
-        <SelectTrigger className="w-44 justify-between rounded-sm shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
+        <SelectTrigger className="w-44 justify-between rounded-none border-none shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
           <SelectValue placeholder={islands[island]} />
         </SelectTrigger>
       </div>
@@ -64,7 +64,7 @@ const IslandSelector = ({
         {Object.entries(islands).map(([key, island]) => (
           <div
             key={key}
-            className="flex justify-center rounded-sm text-smoke-600 dark:text-white hover:cursor-pointer"
+            className="flex justify-center rounded-none text-smoke-600 dark:text-white hover:cursor-pointer"
           >
             <SelectItem value={key}>
               <p
@@ -89,14 +89,6 @@ import {
   convertMinutesToHours,
 } from "@/utils/prayerTimeUtils";
 import useDateStore from "@/store/useDateStore";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 
 interface PrayerTimesDisplayProps {
   selectedRows: string[][] | null;
@@ -113,47 +105,47 @@ const PrayerTimesDisplay = ({
 
   return (
     <div className="mt-3">
-      <Table>
-        <TableHeader>
-          <TableRow>
+      <table className="table-fixed w-full">
+        <thead className="bg-gray-50">
+          <tr>
             {Object.entries(prayerHeaders).map(([key, header]) => (
-              <TableHead
+              <th
                 key={key}
-                className="font-normal text-center text-smoke-400"
+                className="font-medium text-center py-2 text-xs text-slate-800"
               >
                 {header}
-              </TableHead>
+              </th>
             ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
+          </tr>
+        </thead>
+        <tbody>
           {selectedRows.map((row, index) => (
-            <TableRow key={index} className="">
-              <TableCell className="text-center">
+            <tr key={index} className="">
+              <td className="text-center text-xs tabular-nums font-medium pt-2">
                 {getDateFromDayOfYear(Number(row[0]) + 1, selectedDate.year)}
-              </TableCell>
-              <TableCell className="text-center">
+              </td>
+              <td className="text-center text-xs font-light tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[1]))}
-              </TableCell>
-              <TableCell className="text-center">
+              </td>
+              <td className="text-center text-xs font-light tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[2]))}
-              </TableCell>
-              <TableCell className="text-center">
+              </td>
+              <td className="text-center text-xs font-light tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[3]))}
-              </TableCell>
-              <TableCell className="text-center">
+              </td>
+              <td className="text-center text-xs font-light tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[4]))}
-              </TableCell>
-              <TableCell className="text-center">
+              </td>
+              <td className="text-center text-xs font-light tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[5]))}
-              </TableCell>
-              <TableCell className="text-center">
+              </td>
+              <td className="text-center text-xs font-light tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[6]))}
-              </TableCell>
-            </TableRow>
+              </td>
+            </tr>
           ))}
-        </TableBody>
-      </Table>
+        </tbody>
+      </table>
     </div>
   );
 };

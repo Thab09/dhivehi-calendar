@@ -11,7 +11,7 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
     selectedDate,
     setSelectedDate,
     setSelectedHijriDate,
-    setHolidayLevel,
+    setHolidayStatus,
   } = useDateStore();
   const today = isToday(day[0], selectedDate.month, selectedDate.year);
 
@@ -28,6 +28,7 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
       month: day[4],
       year: day[5],
     });
+    setHolidayStatus(day[2]);
   };
 
   const transformNumerals = (num: number): string => {
@@ -58,9 +59,9 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
         year: day[5],
       });
 
-      setHolidayLevel(day[2]);
+      setHolidayStatus(day[2]);
     }
-  }, [day, setSelectedHijriDate, setHolidayLevel, today]);
+  }, [day, setSelectedHijriDate, setHolidayStatus, today]);
 
   //HOLIDAY LEVELS
   // day[2] === 0 means government && bank open
@@ -70,8 +71,8 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
   return (
     <div
       className={`${day[0] === 0 && "hidden"}
-      ${today && "bg-sky-50 rounded-sm dark:bg-zinc-800"}
-      ${selectedDate.day === day[0] && "bg-sky-50 rounded-sm dark:bg-zinc-800"}
+      ${today && "bg-sky-50 dark:bg-zinc-800"}
+      ${selectedDate.day === day[0] && "bg-sky-50 dark:bg-zinc-800"}
       py-3 sm:px-3 sm:py-6 flex flex-col gap-1 justify-center items-center text-black dark:text-smoke-50 tabular-nums sm:gap-1 hover:cursor-pointer
       ${day[2] === 1 && "text-red-700 dark:!text-red-400"}
       ${

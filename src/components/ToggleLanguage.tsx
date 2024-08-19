@@ -38,7 +38,7 @@ const ToggleLanguage = () => {
   return (
     <div>
       <Toggle
-        className="text-xs px-4 font-normal rounded-sm font-mona bg-sky-50 text-sky-900 data-[state=on]:bg-sky-50 data-[state=on]:text-sky-900 hover:bg-sky-50 hover:text-sky-900 dark:text-stone-100 dark:bg-zinc-800"
+        className="text-xs px-4 font-normal rounded-none font-mona bg-sky-50 text-sky-900 data-[state=on]:bg-sky-50 data-[state=on]:text-sky-900 hover:bg-sky-50 hover:text-sky-900 dark:text-stone-100 dark:bg-zinc-800"
         onPressedChange={handleChangeLanguage}
         size={"sm"}
       >

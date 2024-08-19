@@ -9,8 +9,8 @@ type DateStore = {
     month: number;
     year: number;
   }) => void;
-  holidayLevel: number;
-  setHolidayLevel: (level: number) => void;
+  holidayStatus: number;
+  setHolidayStatus: (level: number) => void;
 };
 
 const useDateStore = create<DateStore>((set) => {
@@ -31,9 +31,9 @@ const useDateStore = create<DateStore>((set) => {
     setSelectedHijriDate: (date) => {
       set({ selectedHijriDate: date });
     },
-    holidayLevel: 0,
-    setHolidayLevel: (level) => {
-      set({ holidayLevel: level });
+    holidayStatus: 0,
+    setHolidayStatus: (level) => {
+      set({ holidayStatus: level });
     },
   };
 });
