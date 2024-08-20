@@ -51,10 +51,14 @@ const Calendar = () => {
   useEffect(() => {
     const loadCalendarData = async () => {
       try {
-        const module = await import(
-          `/src/assets/calendar/${selectedDate.year}.json`
-        );
-        setCalendarData(module.default as Year);
+        const response = await fetch(`/calendar/${selectedDate.year}.json`);
+        if (!response.ok) {
+          throw new Error(
+            `Failed to fetch calendar data for year ${selectedDate.year}`
+          );
+        }
+        const data: Year = await response.json();
+        setCalendarData(data);
       } catch (error) {
         console.error(
           `Failed to load calendar data for year ${selectedDate.year}`,
