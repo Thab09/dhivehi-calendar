@@ -144,6 +144,7 @@ const YearSelector = ({
   setSelectedDate,
   setPopoverOpen,
 }: YearSelectorProps) => {
+  const availableYears = [2024, 2025, 2026];
   return (
     <Select
       onValueChange={(value) => {
@@ -159,13 +160,11 @@ const YearSelector = ({
         <SelectValue placeholder={selectedDate.year} />
       </SelectTrigger>
       <SelectContent className="rounded-none">
-        <SelectItem value="2024">2024</SelectItem>
-        <SelectItem disabled value="2025">
-          2025
-        </SelectItem>
-        <SelectItem disabled value="2026">
-          2026
-        </SelectItem>
+        {availableYears.map((year) => (
+          <SelectItem key={year} value={year.toString()}>
+            {year}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );

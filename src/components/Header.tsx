@@ -26,7 +26,7 @@ const Header = () => {
           </div>
         )}
       </div>
-      <div className="flex justify-start items-center mt-4">
+      <div className="flex justify-start items-center mt-2">
         <MonthYearSelector />
       </div>
     </div>

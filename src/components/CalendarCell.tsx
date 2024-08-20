@@ -72,7 +72,7 @@ const CalendarCell = ({ day }: CalendarCellProps) => {
     <div
       className={`${day[0] === 0 && "hidden"}
       ${today && "bg-sky-50 dark:bg-zinc-800 rounded-sm"}
-      ${selectedDate.day === day[0] && "bg-sky-100 dark:bg-zinc-800 rounded-sm"}
+      ${selectedDate.day === day[0] && "bg-sky-50 dark:bg-zinc-800 rounded-sm"}
       py-3 sm:px-3 sm:py-6 flex flex-col gap-1 justify-center items-center text-black dark:text-smoke-50 tabular-nums sm:gap-1 hover:cursor-pointer
       ${day[2] === 1 && "text-red-700 dark:!text-red-400"}
       ${

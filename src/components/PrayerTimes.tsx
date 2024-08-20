@@ -13,7 +13,6 @@ const PrayerTimes = () => {
   const islands = t("islands");
   const prayerSelectorCaption = t("general.2", { ns: "common" });
   const prayerHeaders = t("prayers", { ns: "common" });
-  console.log(prayerHeaders);
 
   const { island, selectIsland, selectedRows } = usePrayerTime();
 
@@ -54,9 +53,11 @@ const IslandSelector = ({
       }}
       dir={i18n.dir()}
     >
-      <div className="flex items-center gap-4 mt-2">
-        <p className="font-normal text-sm">{prayerSelectorCaption}</p>
-        <SelectTrigger className="w-44 justify-between rounded-sm border-none shadow-none focus:ring-transparent text-sm font-medium text-sky-50 bg-sky-700 dark:text-stone-100 dark:bg-stone-700">
+      <div className="flex items-center justify-center gap-4 mt-4 w-full py-2 rounded-sm">
+        <p className="font-bold text-xs text-black dark:text-smoke-200">
+          {prayerSelectorCaption}
+        </p>
+        <SelectTrigger className="w-44 h-8 justify-between rounded-sm border-none shadow-none focus:ring-transparent text-sm font-normal text-sky-950 bg-sky-50 dark:text-stone-100 dark:bg-stone-700">
           <SelectValue placeholder={islands[island]} />
         </SelectTrigger>
       </div>
@@ -104,15 +105,12 @@ const PrayerTimesDisplay = ({
   if (!selectedRows) return <p>No data available</p>;
 
   return (
-    <div className="mt-3">
+    <div className="mt-1">
       <table className="table-fixed w-full">
-        <thead className="bg-gray-50">
+        <thead className="border-b">
           <tr>
             {Object.entries(prayerHeaders).map(([key, header]) => (
-              <th
-                key={key}
-                className="font-medium text-center py-2 text-xs text-slate-800"
-              >
+              <th key={key} className="font-semibold text-center py-2 text-xs">
                 {header}
               </th>
             ))}
@@ -120,26 +118,26 @@ const PrayerTimesDisplay = ({
         </thead>
         <tbody>
           {selectedRows.map((row, index) => (
-            <tr key={index} className="">
-              <td className="text-center text-xs tabular-nums font-medium pt-2">
+            <tr key={index}>
+              <td className="text-center text-xs tabular-nums font-semibold pt-2">
                 {getDateFromDayOfYear(Number(row[0]) + 1, selectedDate.year)}
               </td>
-              <td className="text-center text-xs font-light tabular-nums pt-2">
+              <td className="text-center text-xs font-normal tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[1]))}
               </td>
-              <td className="text-center text-xs font-light tabular-nums pt-2">
+              <td className="text-center text-xs font-normal tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[2]))}
               </td>
-              <td className="text-center text-xs font-light tabular-nums pt-2">
+              <td className="text-center text-xs font-normal tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[3]))}
               </td>
-              <td className="text-center text-xs font-light tabular-nums pt-2">
+              <td className="text-center text-xs font-normal tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[4]))}
               </td>
-              <td className="text-center text-xs font-light tabular-nums pt-2">
+              <td className="text-center text-xs font-normal tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[5]))}
               </td>
-              <td className="text-center text-xs font-light tabular-nums pt-2">
+              <td className="text-center text-xs font-normal tabular-nums pt-2">
                 {convertMinutesToHours(Number(row[6]))}
               </td>
             </tr>

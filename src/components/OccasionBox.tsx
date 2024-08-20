@@ -15,10 +15,8 @@ const OccasionBox = () => {
     day: selectedDate.day,
   });
 
-  console.log(holiday);
-
   return (
-    <div className="flex flex-col justify-center bg-sky-50 rounded-sm my-3 mx-2 sm:my-6 py-3 px-4 sm:px-4 sm:py-4 dark:bg-zinc-800">
+    <div className="flex flex-col justify-center bg-sky-50 rounded-sm my-4 mx-2 sm:my-6 py-3 px-4 sm:px-4 sm:py-4 dark:bg-zinc-800">
       <OccasionBoxDate
         {...{ selectedDate, selectedHijriDate, gmonths, hmonths }}
       />
@@ -69,9 +67,9 @@ const HolidayStatus = ({ holidayStatus, holiday }: HolidayStatusProps) => {
     return null;
   }
   return (
-    <p className="text-sky-950 opacity-70 text-[11px] mb-2 dark:text-smoke-100">
+    <div className="text-sky-950 opacity-70 text-[11px] dark:text-smoke-100">
       {statusText}
-    </p>
+    </div>
   );
 };
 
@@ -82,7 +80,7 @@ type OccasionProps = {
 
 const Occasion = ({ occasion }: OccasionProps) => {
   return (
-    <p className="text-sky-950 text-sm sm:text-base mb-1 dark:text-smoke-100">
+    <p className="text-sky-950 text-sm sm:text-base mb-1 mt-1 dark:text-smoke-100">
       • {occasion}
     </p>
   );
