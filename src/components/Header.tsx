@@ -12,14 +12,14 @@ const Header = () => {
         <ToggleLanguage />
         {darkMode === "light" ? (
           <div
-            className="p-2 bg-sky-50 cursor-pointer"
+            className="p-2 bg-sky-50 rounded-sm cursor-pointer"
             onClick={toggleDarkMode}
           >
             <PiMoonFill className="text-sky-700" />
           </div>
         ) : (
           <div
-            className="p-2 bg-zinc-800 cursor-pointer"
+            className="p-2 bg-zinc-800 rounded-sm cursor-pointer"
             onClick={toggleDarkMode}
           >
             <PiSun className="text-stone-100" />

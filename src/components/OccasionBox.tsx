@@ -1,6 +1,7 @@
 import useCheckOccasion from "@/hooks/useCheckOccasion";
-import { useTranslation } from "react-i18next";
 import useDateStore from "@/store/useDateStore";
+import { useTranslation } from "react-i18next";
+import OccasionBoxDate from "./OccasionBoxDate";
 
 const OccasionBox = () => {
   //getting the translation from the common.json files
@@ -8,7 +9,6 @@ const OccasionBox = () => {
   //getting the specific months from the common.json files
   const gmonths = t("gregorianMonths");
   const hmonths = t("hijriMonths");
-  const noOccasion = t("general.1");
   const holiday = t("general");
   const { selectedDate, selectedHijriDate, holidayStatus } = useDateStore();
   const getOccasion = useCheckOccasion({
@@ -18,13 +18,15 @@ const OccasionBox = () => {
   console.log(holiday);
 
   return (
-    <div className="bg-sky-50 border border-sky-100  my-3 mx-2 sm:my-6 py-3 px-4 sm:px-4 sm:py-4 dark:bg-zinc-800">
-      <Date {...{ selectedDate, selectedHijriDate, gmonths, hmonths }} />
+    <div className="flex flex-col justify-center bg-sky-50 rounded-sm my-3 mx-2 sm:my-6 py-3 px-4 sm:px-4 sm:py-4 dark:bg-zinc-800">
+      <OccasionBoxDate
+        {...{ selectedDate, selectedHijriDate, gmonths, hmonths }}
+      />
       <HolidayStatus {...{ holidayStatus, holiday }} />
 
       {getOccasion?.length ? (
         getOccasion.map((occasion, index) => (
-          <div key={`occasion-${index}`}>
+          <div key={`occasion-${index}`} className="mt-2">
             {Array.isArray(occasion[1]) &&
               occasion[1].map((occasionDescription, innerIndex) => (
                 <Occasion
@@ -35,36 +37,9 @@ const OccasionBox = () => {
           </div>
         ))
       ) : (
-        <div>
-          <Occasion occasion={noOccasion} />
-        </div>
+        <></>
       )}
     </div>
-  );
-};
-
-//DATE COMPONENT
-type DateProps = {
-  selectedDate: { day: number; month: number; year: number };
-  selectedHijriDate: { day: number; month: number; year: number };
-  gmonths: string;
-  hmonths: string;
-};
-
-const Date = ({
-  selectedDate,
-  selectedHijriDate,
-  gmonths,
-  hmonths,
-}: DateProps) => {
-  return (
-    <p className="text-sky-950 text-xs sm:text-sm font-medium opacity-80 mb-1 tabular-nums  dark:text-smoke-400">
-      {`${selectedDate.day} ${gmonths[selectedDate.month]} ${
-        selectedDate.year
-      } - ${selectedHijriDate.day} ${hmonths[selectedHijriDate.month]} ${
-        selectedHijriDate.year
-      }`}
-    </p>
   );
 };
 
@@ -89,6 +64,9 @@ const HolidayStatus = ({ holidayStatus, holiday }: HolidayStatusProps) => {
       break;
     default:
       statusText = "";
+  }
+  if (!statusText) {
+    return null;
   }
   return (
     <p className="text-sky-950 opacity-70 text-[11px] mb-2 dark:text-smoke-100">

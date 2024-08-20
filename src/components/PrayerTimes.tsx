@@ -56,7 +56,7 @@ const IslandSelector = ({
     >
       <div className="flex items-center gap-4 mt-2">
         <p className="font-normal text-sm">{prayerSelectorCaption}</p>
-        <SelectTrigger className="w-44 justify-between rounded-none border-none shadow-none focus:ring-transparent text-sm font-medium text-sky-900 dark:text-stone-100 dark:bg-stone-700">
+        <SelectTrigger className="w-44 justify-between rounded-sm border-none shadow-none focus:ring-transparent text-sm font-medium text-sky-50 bg-sky-700 dark:text-stone-100 dark:bg-stone-700">
           <SelectValue placeholder={islands[island]} />
         </SelectTrigger>
       </div>
