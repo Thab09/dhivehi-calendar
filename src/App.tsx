@@ -2,6 +2,7 @@ import Calendar from "./components/Calendar.tsx";
 import Header from "./components/Header.tsx";
 import OccasionBox from "./components/OccasionBox.tsx";
 import PrayerTimes from "./components/PrayerTimes.tsx";
+import { Analytics } from "@vercel/analytics/react";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <OccasionBox />
         <PrayerTimes />
       </div>
+      <Analytics />
     </div>
   );
 };

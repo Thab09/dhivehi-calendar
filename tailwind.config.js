@@ -10,7 +10,6 @@ module.exports = {
   prefix: "",
   theme: {
     fontFamily: {
-      poppins: ["Poppins", "sans-serif"],
       amiri: ["Amiri", "sans-serif"],
       mona: ["Mona Sans", "sans-serif"],
       rasmee: ["AK Rasmee", "sans-serif"],
