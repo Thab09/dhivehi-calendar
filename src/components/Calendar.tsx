@@ -3,10 +3,9 @@ import CalendarHeader from "./CalendarHeader";
 import useDateStore from "@/store/useDateStore";
 import { getMonthName } from "@/utils/monthUtils";
 
-import calendar from "../assets/calendar/2024.json";
 import getHijriDate from "@/utils/getHijriDate";
 import useHijriDateStore from "@/store/useHijriDateStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 type Day = [number, number, number, number, number, number];
 type Week = Day[];
@@ -44,28 +43,52 @@ type MonthName =
   | "december";
 
 const Calendar = () => {
-  const calendarData: Year = calendar as Year;
   const { selectedDate } = useDateStore();
-  //since the month is store by number, the funciton is fetching the month name
+  const [calendarData, setCalendarData] = useState<Year | null>(null);
   const monthName = getMonthName(selectedDate.month).toLowerCase() as MonthName;
-  const month: Month = calendarData[monthName];
-
   const setHijriDates = useHijriDateStore((state) => state.setHijriDates);
 
   useEffect(() => {
-    const {
-      firstHijriMonth,
-      secondHijriMonth,
-      firstHijriYear,
-      secondHijriYear,
-    } = getHijriDate(month);
-    setHijriDates(
-      firstHijriMonth,
-      secondHijriMonth,
-      firstHijriYear,
-      secondHijriYear
-    );
-  }, [month, setHijriDates]);
+    const loadCalendarData = async () => {
+      try {
+        const module = await import(
+          `/src/assets/calendar/${selectedDate.year}.json`
+        );
+        setCalendarData(module.default as Year);
+      } catch (error) {
+        console.error(
+          `Failed to load calendar data for year ${selectedDate.year}`,
+          error
+        );
+        setCalendarData(null);
+      }
+    };
+
+    loadCalendarData();
+  }, [selectedDate.year]);
+
+  useEffect(() => {
+    if (calendarData) {
+      const month: Month = calendarData[monthName];
+      const {
+        firstHijriMonth,
+        secondHijriMonth,
+        firstHijriYear,
+        secondHijriYear,
+      } = getHijriDate(month);
+      setHijriDates(
+        firstHijriMonth,
+        secondHijriMonth,
+        firstHijriYear,
+        secondHijriYear
+      );
+    }
+  }, [calendarData, monthName, setHijriDates]);
+
+  if (!calendarData) {
+    return <div>Loading calendar data...</div>;
+  }
+  const month: Month = calendarData[monthName];
 
   return (
     <div className="mx-2">
